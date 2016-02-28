@@ -1,0 +1,36 @@
+
+public interface ImageObserver 
+An asynchronous update interface for receiving notifications about Image 
+information as the Image is constructed.
+
+boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) 
+This method is called when information about an image which was previously 
+requested using an asynchronous interface becomes available. 
+
+You can get away with Graphics.drawImage(img, x, y, null) [or similar]. 
+The ImageObserver parameter is a callback to inform you of the progress of the 
+draw operation; and is really only useful if you're fetching the Image parameter 
+asynchronously.
+
+To be clearer, if you call drawImage with an incompletely loaded Image it will:
+ 1.return false (immediately)
+ 2.draw as much of the Image as possible (all that is loaded)
+ 3.and, at some future point, call into the ImageObserver when more of the Image 
+   is available
+ 
+Basically, if you're working with in memory Images (either loaded from the file 
+system, or constructed by your program) don't worry about the ImageObserver parameter. 
+If you're loading Images across the network and not explicitly waiting for them 
+to load, you'll need to employ an ImageObserver to make sure "completely" draw an Image.
+
+Image objects aren't necessarily completely loaded. If Graphics.drawImage is 
+invoked on an incomplete image it will draw as much of the image as it can, and 
+then alert the ImageObserver (by calling imageUpdate) when more of the image is loaded.
+
+The ImageObserver can be null, in which case you won't get any notification. 
+This is common if the images are known to be loaded, or if there's already 
+another mechanism doing repaints.
+
+Note that Component implements ImageObserver, and its imageUpdate method will 
+cause a repaint on the affected area.
+

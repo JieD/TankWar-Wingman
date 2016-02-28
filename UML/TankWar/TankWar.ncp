@@ -1,0 +1,182 @@
+<Project>
+  <Name>TankWar</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>DetailedSkeleton</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>BasicObject</Name>
+        <Access>Public</Access>
+        <Location left="451" top="44" />
+        <Size width="270" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String name</Member>
+        <Member type="Field">private Image currentImage</Member>
+        <Member type="Field">private Image[] imageList</Member>
+        <Member type="Method">protected void mapCorrectImage()</Member>
+        <Member type="Method">protected void increaseDirection()</Member>
+        <Member type="Method">protected void decreaseDirection()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CollidableObject</Name>
+        <Access>Public</Access>
+        <Location left="440" top="278" />
+        <Size width="289" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public abstract void collide(CollidableObject other)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Munitions</Name>
+        <Access>Public</Access>
+        <Location left="696" top="462" />
+        <Size width="301" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Weapon owner = null</Member>
+        <Member type="Field">private int lifeSpan</Member>
+        <Member type="Field">private long lifeStartTime</Member>
+        <Member type="Method">public void collide(CollidableObject another)</Member>
+        <Member type="Method">private boolean isEffectiveCollision(CollidableObject another)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PermanentWall</Name>
+        <Access>Public</Access>
+        <Location left="189" top="251" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DestructibleWall</Name>
+        <Access>Public</Access>
+        <Location left="94" top="358" />
+        <Size width="278" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private final Point startPosition</Member>
+        <Member type="Field">private Point disappearPosition = Constants.DISAPPEAR</Member>
+        <Member type="Method">private void checkReappear(long wait)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Pickup</Name>
+        <Access>Public</Access>
+        <Location left="291" top="515" />
+        <Size width="305" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String currentName</Member>
+        <Member type="Field">private HashMap&lt;String, MunitionUsage&gt; munitionUsageTable</Member>
+        <Member type="Method">private void chooseType()</Member>
+        <Member type="Method">private void reappear()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>TargetMunition</Name>
+        <Access>Public</Access>
+        <Location left="504" top="732" />
+        <Size width="162" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Weapon target</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BouncingMunition</Name>
+        <Access>Public</Access>
+        <Location left="713" top="732" />
+        <Size width="266" height="114" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">private void checkBouncing(CollidableObject another)</Member>
+        <Member type="Method">private void bounce(CollidableObject another)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Shield</Name>
+        <Access>Public</Access>
+        <Location left="1010" top="732" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SmartWeapon</Name>
+        <Access>Public</Access>
+        <Location left="1095" top="278" />
+        <Size width="228" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public abstract void collide(CollidableObject another)</Member>
+        <Member type="Method">public abstract void hit(CollidableObject another)</Member>
+        <Member type="Method">public abstract void update(Observable o, Object o1)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Tank</Name>
+        <Access>Public</Access>
+        <Location left="1035" top="462" />
+        <Size width="348" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private MunitionUsage currentSecondaryWeapon</Member>
+        <Member type="Field">private boolean friction = true</Member>
+        <Member type="Method">private void drawHealthBar(Graphics g)</Member>
+        <Member type="Method">private void drawSecondaryWeapon(Graphics g, ImageObserver obs)</Member>
+        <Member type="Method">private void reset()</Member>
+        <Member type="Method">private void checkFriction()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Weapon</Name>
+        <Access>Public</Access>
+        <Location left="858" top="278" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="10" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="11" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="11">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

@@ -1,0 +1,25 @@
+public class BufferedImage
+extends Image
+implements WritableRenderedImage, Transparency 
+
+The BufferedImage subclass describes an Image with an accessible buffer of image data. 
+
+public Graphics2D createGraphics() 
+Creates a Graphics2D, which can be used to draw into this BufferedImage.
+Returns:
+        a Graphics2D, used for drawing into this image
+
+public BufferedImage getSubimage(int x,
+                        int y,
+                        int w,
+                        int h) 
+Returns a subimage defined by a specified rectangular region. The returned 
+BufferedImage shares the same data array as the original image.
+Parameters: x - the X coordinate of the upper-left corner of the specified rectangular region
+            y - the Y coordinate of the upper-left corner of the specified rectangular region
+            w - the width of the specified rectangular region
+            h - the height of the specified rectangular region 
+Returns: 
+        a BufferedImage that is the subimage of this BufferedImage. 
+Throws: 
+        RasterFormatException - if the specified area is not contained within this BufferedImage.

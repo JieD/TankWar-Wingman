@@ -1,0 +1,460 @@
+<Project>
+  <Name>Wingman</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>gamingComponents</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>BasicObject</Name>
+        <Access>Public</Access>
+        <Location left="397" top="84" />
+        <Size width="363" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int x</Member>
+        <Member type="Field">private int y</Member>
+        <Member type="Field">private int speed</Member>
+        <Member type="Field">private int direction</Member>
+        <Member type="Field">private Image image</Member>
+        <Member type="Field">private int sizeX</Member>
+        <Member type="Field">private int sizeY</Member>
+        <Member type="Constructor">public BasicObject(int x, int y, int speed, int direction, Image image)</Member>
+        <Member type="Method">public boolean isOut(int width, int height)</Member>
+        <Member type="Method">public void draw(Graphics g, ImageObserver obs)</Member>
+        <Member type="Method">public void update(int width, int height)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Island</Name>
+        <Access>Public</Access>
+        <Location left="906" top="296" />
+        <Size width="208" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Random gen</Member>
+        <Member type="Method">public void update(int width, int height)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CollidableObject</Name>
+        <Access>Public</Access>
+        <Location left="329" top="506" />
+        <Size width="513" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String name</Member>
+        <Member type="Field">private int damageOther</Member>
+        <Member type="Field">private int reward</Member>
+        <Member type="Field">private Explosion explosion</Member>
+        <Member type="Field">private ArrayList&lt;String&gt; enemyList</Member>
+        <Member type="Field">private boolean alive = true</Member>
+        <Member type="Field">private boolean exploding = false</Member>
+        <Member type="Constructor">public CollidableObject(int x, int y, int speed, Property property, Image image, Explosion explosion)</Member>
+        <Member type="Method">public abstract void collide(CollidableObject other)</Member>
+        <Member type="Method">public Rectangle getVisualRect(ImageObserver observer)</Member>
+        <Member type="Method">public boolean intersects(CollidableObject another, ImageObserver observer)</Member>
+        <Member type="Method">protected void explode()</Member>
+        <Member type="Method">public void update(int width, int height)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Munitions</Name>
+        <Access>Public</Access>
+        <Location left="26" top="966" />
+        <Size width="486" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int x</Member>
+        <Member type="Field">private int y</Member>
+        <Member type="Field">private Weapon owner = null</Member>
+        <Member type="Constructor">public Munitions(int x, int y, int speed, Property property, Image image, Explosion explosion)</Member>
+        <Member type="Constructor">public Munitions(Property property, Image image, Explosion explosion, Weapon owner)</Member>
+        <Member type="Method">public void collide(CollidableObject another)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Weapon</Name>
+        <Access>Public</Access>
+        <Location left="688" top="966" />
+        <Size width="602" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ArrayList&lt;MunitionUsage&gt; munitionUsageList = new ArrayList()</Member>
+        <Member type="Field">private GameEvents gameEvents</Member>
+        <Member type="Field">private MunitionUsage currentMunition</Member>
+        <Member type="Constructor">public Weapon(int x, int y, int speed, Property property, Image image, Explosion explosion, GameEvents gameEvents)</Member>
+        <Member type="Method">public void fire()</Member>
+        <Member type="Method">public void fire(MunitionUsage munition)</Member>
+        <Member type="Method">public abstract void collide(CollidableObject another)</Member>
+        <Member type="Method">public abstract void hit(CollidableObject enemy)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DumpWeapon</Name>
+        <Access>Public</Access>
+        <Location left="276" top="1420" />
+        <Size width="640" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public DumpWeapon(int x, int y, int speed, Property property, Image image, Explosion explosion, GameEvents gameEvents)</Member>
+        <Member type="Method">public void collide(CollidableObject another)</Member>
+        <Member type="Method">public void hit(CollidableObject enemy)</Member>
+        <Member type="Method">public void update(int width, int height)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SmartWeapon</Name>
+        <Access>Public</Access>
+        <Location left="1145" top="1420" />
+        <Size width="392" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int life</Member>
+        <Member type="Field">private final int HEALTH</Member>
+        <Member type="Field">private int health</Member>
+        <Member type="Field">private int score</Member>
+        <Member type="Field">private int[] keyControl</Member>
+        <Member type="Field">private boolean move</Member>
+        <Member type="Field">private int control = -1</Member>
+        <Member type="Constructor">public SmartWeapon(int x, int y, int speed, Property property, Image image)</Member>
+        <Member type="Method">public void collide(CollidableObject another)</Member>
+        <Member type="Method">public void hit(CollidableObject enemy)</Member>
+        <Member type="Method">public void update(int width, int height)</Member>
+        <Member type="Method">void update(Observable o, Object o1)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>Observer</Name>
+        <Access>Public</Access>
+        <Location left="1535" top="1194" />
+        <Size width="226" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void update(Observable o, Object o1)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameEvents</Name>
+        <Access>Public</Access>
+        <Location left="1426" top="776" />
+        <Size width="202" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int type</Member>
+        <Member type="Field">private Object event</Member>
+        <Member type="Method">public void setValue(KeyEvent key)</Member>
+        <Member type="Method">public void setValue(Weapon weapon)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Observable</Name>
+        <Access>Public</Access>
+        <Location left="1454" top="615" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="6" second="7">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="8" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Skeleton</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>BasicObject</Name>
+        <Access>Public</Access>
+        <Location left="536" top="131" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CollidableObject</Name>
+        <Access>Public</Access>
+        <Location left="536" top="265" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Munitions</Name>
+        <Access>Public</Access>
+        <Location left="378" top="452" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Weapon</Name>
+        <Access>Public</Access>
+        <Location left="676" top="452" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DumpWeapon</Name>
+        <Access>Public</Access>
+        <Location left="557" top="635" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SmartWeapon</Name>
+        <Access>Public</Access>
+        <Location left="786" top="635" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>DetailedSkeleton</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>CollidableObject</Name>
+        <Access>Public</Access>
+        <Location left="130" top="208" />
+        <Size width="401" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String name</Member>
+        <Member type="Field">private int damageOther</Member>
+        <Member type="Field">private int reward</Member>
+        <Member type="Field">private Explosion explosion</Member>
+        <Member type="Field">private ArrayList&lt;String&gt; enemyList</Member>
+        <Member type="Field">private boolean alive = true</Member>
+        <Member type="Method">public abstract void collide(CollidableObject other)</Member>
+        <Member type="Method">public boolean intersects(CollidableObject another, ImageObserver observer)</Member>
+        <Member type="Method">protected void explode()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BasicObject</Name>
+        <Access>Public</Access>
+        <Location left="240" top="36" />
+        <Size width="219" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public boolean isOut(int width, int height)</Member>
+        <Member type="Method">public void update(int width, int height)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Munitions</Name>
+        <Access>Public</Access>
+        <Location left="14" top="568" />
+        <Size width="223" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Weapon owner = null</Member>
+        <Member type="Method">public void collide(CollidableObject another)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Weapon</Name>
+        <Access>Public</Access>
+        <Location left="402" top="568" />
+        <Size width="260" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ArrayList&lt;MunitionUsage&gt; munitionUsageList</Member>
+        <Member type="Field">private GameEvents gameEvents</Member>
+        <Member type="Field">private MunitionUsage currentMunition</Member>
+        <Member type="Method">public void fire()</Member>
+        <Member type="Method">public void fire(MunitionUsage munition)</Member>
+        <Member type="Method">public abstract void collide(CollidableObject another)</Member>
+        <Member type="Method">public abstract void hit(CollidableObject enemy)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DumpWeapon</Name>
+        <Access>Public</Access>
+        <Location left="286" top="847" />
+        <Size width="227" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void collide(CollidableObject another)</Member>
+        <Member type="Method">public void hit(CollidableObject enemy)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SmartWeapon</Name>
+        <Access>Public</Access>
+        <Location left="564" top="847" />
+        <Size width="233" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int life</Member>
+        <Member type="Field">private final int HEALTH</Member>
+        <Member type="Field">private int health</Member>
+        <Member type="Field">private int score</Member>
+        <Member type="Field">private int[] keyControl</Member>
+        <Member type="Method">public void collide(CollidableObject another)</Member>
+        <Member type="Method">public void hit(CollidableObject enemy)</Member>
+        <Member type="Method">public void update(int width, int height)</Member>
+        <Member type="Method">void update(Observable o, Object o1)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>Observer</Name>
+        <Access>Public</Access>
+        <Location left="740" top="693" />
+        <Size width="226" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void update(Observable o, Object o1)</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="0" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="5" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Weapon &amp; DumpWeapon &amp; SmartWeapon</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Interface">
+        <Name>Observer</Name>
+        <Access>Public</Access>
+        <Location left="1049" top="161" />
+        <Size width="226" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void update(Observable o, Object o1)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>SmartWeapon</Name>
+        <Access>Public</Access>
+        <Location left="805" top="345" />
+        <Size width="392" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private int life</Member>
+        <Member type="Field">private final int HEALTH</Member>
+        <Member type="Field">private int health</Member>
+        <Member type="Field">private int score</Member>
+        <Member type="Field">private int[] keyControl</Member>
+        <Member type="Field">private boolean move</Member>
+        <Member type="Field">private int control = -1</Member>
+        <Member type="Constructor">public SmartWeapon(int x, int y, int speed, Property property, Image image)</Member>
+        <Member type="Method">public void collide(CollidableObject another)</Member>
+        <Member type="Method">public void hit(CollidableObject enemy)</Member>
+        <Member type="Method">public void update(int width, int height)</Member>
+        <Member type="Method">void update(Observable o, Object o1)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Weapon</Name>
+        <Access>Public</Access>
+        <Location left="387" top="36" />
+        <Size width="602" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ArrayList&lt;MunitionUsage&gt; munitionUsageList = new ArrayList()</Member>
+        <Member type="Field">private GameEvents gameEvents</Member>
+        <Member type="Field">private MunitionUsage currentMunition</Member>
+        <Member type="Constructor">public Weapon(int x, int y, int speed, Property property, Image image, Explosion explosion, GameEvents gameEvents)</Member>
+        <Member type="Method">public void fire()</Member>
+        <Member type="Method">public void fire(MunitionUsage munition)</Member>
+        <Member type="Method">public abstract void collide(CollidableObject another)</Member>
+        <Member type="Method">public abstract void hit(CollidableObject enemy)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DumpWeapon</Name>
+        <Access>Public</Access>
+        <Location left="10" top="345" />
+        <Size width="640" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public DumpWeapon(int x, int y, int speed, Property property, Image image, Explosion explosion, GameEvents gameEvents)</Member>
+        <Member type="Method">public void collide(CollidableObject another)</Member>
+        <Member type="Method">public void hit(CollidableObject enemy)</Member>
+        <Member type="Method">public void update(int width, int height)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

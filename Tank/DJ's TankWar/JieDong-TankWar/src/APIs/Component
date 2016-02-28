@@ -1,0 +1,12 @@
+public Image createImage(int width,
+                int height) 
+Creates an off-screen drawable image to be used for double buffering.
+Parameters:
+    width - the specified width
+    height - the specified height 
+Returns:
+    an off-screen drawable image, which can be used for double buffering. 
+    The return value may be null if the component is not displayable. 
+    This will always happen if GraphicsEnvironment.isHeadless() returns true.
+Since:JDK1.0 
+See Also:isDisplayable(), GraphicsEnvironment.isHeadless()

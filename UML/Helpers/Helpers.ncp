@@ -1,0 +1,217 @@
+<Project>
+  <Name>Helpers</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Explosion</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Explosion</Name>
+        <Access>Public</Access>
+        <Location left="190" top="127" />
+        <Size width="317" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ArrayList&lt;Image&gt; animation</Member>
+        <Member type="Field">private AudioClip sound</Member>
+        <Member type="Field">private int type</Member>
+        <Member type="Field">private int current = 0</Member>
+        <Member type="Constructor">public Explosion()</Member>
+        <Member type="Constructor">public Explosion(AudioClip sound)</Member>
+        <Member type="Constructor">public Explosion(ArrayList&lt;Image&gt; animation, AudioClip sound)</Member>
+        <Member type="Method">public Image getCurrentImage()</Member>
+        <Member type="Method">public void playAudio()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>MunitionUsage</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>MunitionUsage</Name>
+        <Access>Public</Access>
+        <Location left="310" top="161" />
+        <Size width="421" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String munitionName</Member>
+        <Member type="Field">private Image sign</Member>
+        <Member type="Field">private int storage</Member>
+        <Member type="Field">private boolean limited = false</Member>
+        <Member type="Field">private int delay</Member>
+        <Member type="Field">private long lastFireTime</Member>
+        <Member type="Method">public void newMethod()</Member>
+        <Member type="Constructor">public MunitionUsage(String munitionName)</Member>
+        <Member type="Constructor">public MunitionUsage(String munitionName, int delay)</Member>
+        <Member type="Constructor">public MunitionUsage(String munitionName, Image sign, int delay, int storage)</Member>
+        <Member type="Method">public boolean isAvailable()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Property</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Property</Name>
+        <Access>Public</Access>
+        <Location left="64" top="84" />
+        <Size width="973" height="417" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String name</Member>
+        <Member type="Field">private int speed</Member>
+        <Member type="Field">private int direction</Member>
+        <Member type="Field">private Image[] imageList</Member>
+        <Member type="Field">private Explosion explosion</Member>
+        <Member type="Field">private HashMap&lt;String, MunitionUsage&gt; munitionUsageTable</Member>
+        <Member type="Field">private ArrayList&lt;MunitionUsage&gt; munitionUsageList</Member>
+        <Member type="Field">private int damageOther</Member>
+        <Member type="Field">private int lifeSpan</Member>
+        <Member type="Field">private int life</Member>
+        <Member type="Field">private int health</Member>
+        <Member type="Field">private int[] keyControl</Member>
+        <Member type="Field">private String enemy</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion, HashMap&lt;String, MunitionUsage&gt; munitionUsageTable)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion, int damageOther, int lifeSpan)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion, ArrayList&lt;MunitionUsage&gt; munitionUsageList, String enemy)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion, ArrayList&lt;MunitionUsage&gt; munitionUsageList, String enemy, int life, int health, int[] keyControl)</Member>
+        <Member type="Method">public boolean hasMultiImage()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>ResourceManagement</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>ResourceLoader</Name>
+        <Access>Public</Access>
+        <Location left="131" top="102" />
+        <Size width="293" height="166" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private TankWar applet</Member>
+        <Member type="Constructor">public ResourceLoader(TankWar applet)</Member>
+        <Member type="Method">public BufferedImage loadSingleImage(String spriteName)</Member>
+        <Member type="Method">public Image[] loadImage(String SpriteName)</Member>
+        <Member type="Method">public AudioClip loadSound(String soundName)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ResourceTable</Name>
+        <Access>Public</Access>
+        <Location left="538" top="102" />
+        <Size width="291" height="163" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ResourceLoader loader</Member>
+        <Member type="Field">private HashMap&lt;String, Property&gt; table = new HashMap()</Member>
+        <Member type="Constructor">public ResourceTable(ResourceLoader loader)</Member>
+        <Member type="Method">public void init()</Member>
+        <Member type="Method">public Property getProperty(String name)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Property</Name>
+        <Access>Public</Access>
+        <Location left="20" top="315" />
+        <Size width="973" height="417" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String name</Member>
+        <Member type="Field">private int speed</Member>
+        <Member type="Field">private int direction</Member>
+        <Member type="Field">private Image[] imageList</Member>
+        <Member type="Field">private Explosion explosion</Member>
+        <Member type="Field">private HashMap&lt;String, MunitionUsage&gt; munitionUsageTable</Member>
+        <Member type="Field">private ArrayList&lt;MunitionUsage&gt; munitionUsageList</Member>
+        <Member type="Field">private int damageOther</Member>
+        <Member type="Field">private int lifeSpan</Member>
+        <Member type="Field">private int life</Member>
+        <Member type="Field">private int health</Member>
+        <Member type="Field">private int[] keyControl</Member>
+        <Member type="Field">private String enemy</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion, HashMap&lt;String, MunitionUsage&gt; munitionUsageTable)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion, int damageOther, int lifeSpan)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion, ArrayList&lt;MunitionUsage&gt; munitionUsageList, String enemy)</Member>
+        <Member type="Constructor">public Property(String name, int speed, int direction, Image[] imageList, Explosion explosion, ArrayList&lt;MunitionUsage&gt; munitionUsageList, String enemy, int life, int health, int[] keyControl)</Member>
+        <Member type="Method">public boolean hasMultiImage()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Creator</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Creator</Name>
+        <Access>Public</Access>
+        <Location left="174" top="223" />
+        <Size width="638" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String LayoutFileName</Member>
+        <Member type="Field">private ArrayList&lt;CollidableObject&gt; objectList</Member>
+        <Member type="Field">private ResourceTable resourceTable</Member>
+        <Member type="Field">private GameEvents gameEvents</Member>
+        <Member type="Constructor">public Creator(String fileName, ArrayList&lt;CollidableObject&gt; objectList, ResourceTable resourceTable, GameEvents gameEvents)</Member>
+        <Member type="Method">public void initTankWar()</Member>
+        <Member type="Method">public void update(Observable o, Object o1)</Member>
+        <Member type="Method">private CollidableObject create(String name, int x, int y)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>Observer</Name>
+        <Access>Public</Access>
+        <Location left="372" top="38" />
+        <Size width="242" height="95" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void update(Observable o, Object o1)</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Realization" first="0" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>CollisionDetector &amp; Constants</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>CollisionDetector</Name>
+        <Access>Public</Access>
+        <Location left="111" top="84" />
+        <Size width="285" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ArrayList&lt;CollidableObject&gt; list</Member>
+        <Member type="Constructor">public CollisionDetector(ArrayList&lt;CollidableObject&gt; list)</Member>
+        <Member type="Method">public void update()</Member>
+        <Member type="Method">public void checkCollision(ImageObserver observer)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Constants</Name>
+        <Access>Public</Access>
+        <Location left="87" top="270" />
+        <Size width="328" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public static final Dimension MAP_DIMENSION = new Dimension(1280, 1280)</Member>
+        <Member type="Field">public static final Random GENERATOR = new Random(1234567)</Member>
+        <Member type="Field">public static final int MAX_SPEED = 16</Member>
+        <Member type="Field">public static final int SHOOT_DELAY = 333</Member>
+        <Member type="Field">public static final int SHELL_LIFE_SPAN = 5000</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+</Project>

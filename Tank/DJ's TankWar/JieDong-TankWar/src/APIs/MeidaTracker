@@ -1,0 +1,31 @@
+
+     * The MediaTracker class is a utility class to track the status of a number 
+     * of media objects. To use a media tracker, create an instance of MediaTracker 
+     * and call its addImage method for each image to be tracked. In addition, 
+     * each image can be assigned a unique identifier. This identifier controls 
+     * the priority order in which the images are fetched. 
+     * 
+     * MediaTracker was useful in 1995. Back then the primary GUI use of java was 
+     * Applets, and Applets would usually load images slowly over the network. 
+     * To make it easier for Applet writers, java gave us a nice MediaTracker API 
+     * which would download images in the background, tracking when they were done, 
+     * and even give notifications when images were partially loaded. The MediaTracker 
+     * API meant Applet writers didn't have to block the application while images 
+     * slowly downloaded, and didn't have to write complicated threading code to 
+     * load images in background threads.
+     * These days you can typically load images synchronously, and it is best to 
+     * use ImageIO. This is especially true for the common case where images are 
+     * loaded from the local file system
+
+public void waitForID(int id)
+               throws InterruptedException 
+Starts loading all images tracked by this media tracker with the specified identifier. 
+This method waits until all the images with the specified identifier have finished loading. 
+If there is an error while loading or scaling an image, then that image is considered 
+to have finished loading. Use the isErrorAny and isErrorID methods to check for errors.
+Parameters:
+    id - the identifier of the images to check 
+Throws: 
+    InterruptedException - if any thread has interrupted this thread.
+See Also:
+    waitForAll(), isErrorAny(), isErrorID(int)
