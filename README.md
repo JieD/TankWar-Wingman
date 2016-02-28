@@ -2,7 +2,7 @@
 ##### Software Development Course Projects - TankWar &amp; WingMan
 
 ### Description
-1.  Realized the Game Maker version of Wingman and Tank games locally in Java.
+1.  Realized the Game Maker version of Wingman and Tank games locally (in Java).
 2.  Practiced Object Oriented Design and Object Oriented Programming - ensured 80% of code reuse.
 
 ### ScreenShots
